@@ -16,16 +16,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
     private val myDataset:Array<ImageElement> = arrayOf<ImageElement>(
         ImageElement(
-            R.drawable.joe1, "Hello",
-        "Would like to say hello 1"
+            R.drawable.joe1
         ),
         ImageElement(
-            R.drawable.joe2, "Hello",
-            "Would like to say hello 2"
+            R.drawable.joe2
         ),
         ImageElement(
-            R.drawable.joe3, "Hello",
-            "Would like to say hello 3"
+            R.drawable.joe3
         )
     )
 
@@ -61,13 +58,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(items: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
+        val id = items.itemId
         return if (id == R.id.action_settings) {
             true
-        } else super.onOptionsItemSelected(item)
+        } else super.onOptionsItemSelected(items)
     }
 }
