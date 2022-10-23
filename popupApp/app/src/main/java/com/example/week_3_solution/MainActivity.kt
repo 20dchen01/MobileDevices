@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,17 +15,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
-    private val myDataset:Array<ImageElement> = arrayOf<ImageElement>(
-        ImageElement(
-            R.drawable.joe1
-        ),
-        ImageElement(
-            R.drawable.joe2
-        ),
-        ImageElement(
-            R.drawable.joe3
-        )
-    )
+    private val myDataset: MutableList<ImageElement> = ArrayList<ImageElement>()
+    private fun initData(){
+        repeat(10){
+            myDataset.add(ImageElement(R.drawable.joe1))
+            myDataset.add(ImageElement(R.drawable.joe2))
+            myDataset.add(ImageElement(R.drawable.joe3))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         // in content do not change the layout size of the RecyclerView
         //mRecyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
-        mLayoutManager = LinearLayoutManager(this)
-        mRecyclerView.layoutManager = mLayoutManager
+        // use a grid layout manager
+        val numberOfColumns = 4
+        mRecyclerView.layoutManager = GridLayoutManager(this, numberOfColumns)
 
         // specify an adapter (see also next example)
         mAdapter = MyAdapter(myDataset) as RecyclerView.Adapter<RecyclerView.ViewHolder>
