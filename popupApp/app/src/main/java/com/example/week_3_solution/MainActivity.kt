@@ -14,16 +14,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
-    private val myDataset:Array<MyElement> = arrayOf<MyElement>(
-        MyElement(
+    private val myDataset:Array<ImageElement> = arrayOf<ImageElement>(
+        ImageElement(
             R.drawable.joe1, "Hello",
         "Would like to say hello 1"
         ),
-        MyElement(
+        ImageElement(
             R.drawable.joe2, "Hello",
             "Would like to say hello 2"
         ),
-        MyElement(
+        ImageElement(
             R.drawable.joe3, "Hello",
             "Would like to say hello 3"
         )

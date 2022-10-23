@@ -11,13 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private lateinit var context: Context
-    private var items: Array<MyElement>
+    //make private list of ImageElement called items
+    private lateinit var items: List<ImageElement>
+    companion object {
+        lateinit var items: List<ImageElement>
+    }
 
-    constructor(items: Array<MyElement>) {
+    constructor(items: Array<ImageElement>) {
         this.items = items
     }
 
-    constructor(cont: Context, items: Array<MyElement>) : super() {
+    constructor(cont: Context, items: Array<ImageElement>) : super() {
         this.items = items
         context = cont
     }
