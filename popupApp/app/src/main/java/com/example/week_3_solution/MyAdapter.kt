@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -19,7 +18,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
 
-    constructor(items: Array<ImageElement>) {
+    constructor(items: MutableList<ImageElement>) {
         this.items = items.toList()
     }
 

@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         // use a grid layout manager
         val numberOfColumns = 4
         mRecyclerView.layoutManager = GridLayoutManager(this, numberOfColumns)
-
+        initData()
         // specify an adapter (see also next example)
         mAdapter = MyAdapter(myDataset) as RecyclerView.Adapter<RecyclerView.ViewHolder>
         mRecyclerView.adapter = mAdapter
