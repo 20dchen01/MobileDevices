@@ -1,4 +1,4 @@
-package com.example.week_3_solution
+package com.example.week_4A_solution
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,14 +13,15 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>
-    private lateinit var mLayoutManager: RecyclerView.LayoutManager
+//    private lateinit var mLayoutManager: RecyclerView.LayoutManager
     private val myDataset: MutableList<ImageElement> = ArrayList<ImageElement>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         initData()
+
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
 
         mRecyclerView = findViewById<RecyclerView>(R.id.my_list)
@@ -29,12 +30,12 @@ class MainActivity : AppCompatActivity() {
         // in content do not change the layout size of the RecyclerView
         //mRecyclerView.setHasFixedSize(true);
 
-        // use a grid layout manager
+        // use a linear layout manager
         val numberOfColumns = 4
         mRecyclerView.layoutManager = GridLayoutManager(this, numberOfColumns)
 
         // specify an adapter (see also next example)
-        mAdapter = MyAdapter(myDataset) as RecyclerView.Adapter<RecyclerView.ViewHolder>
+        mAdapter = MyAdapter(this, myDataset) as RecyclerView.Adapter<RecyclerView.ViewHolder>
         mRecyclerView.adapter = mAdapter
         val fab: FloatingActionButton = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener(View.OnClickListener { view ->
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun initData(){
+    private fun initData() {
         repeat(1000){
             myDataset.add(ImageElement(R.drawable.joe1))
             myDataset.add(ImageElement(R.drawable.joe2))
@@ -57,13 +58,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(items: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        val id = items.itemId
+        val id = item.itemId
         return if (id == R.id.action_settings) {
             true
-        } else super.onOptionsItemSelected(items)
+        } else super.onOptionsItemSelected(item)
     }
 }

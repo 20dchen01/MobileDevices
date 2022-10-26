@@ -1,5 +1,6 @@
-package com.example.week_3_solution
+package com.example.week_4A_solution
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.ImageView
 import com.google.android.material.snackbar.Snackbar
@@ -8,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.week_3_solution.databinding.ActivityShowImageBinding
+import com.example.week_4A_solution.databinding.ActivityShowImageBinding
 
 class ShowImageActivity : AppCompatActivity() {
 
@@ -18,13 +19,14 @@ class ShowImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_image)
-// intent is a property of the activity. intent.extras returns any data that was pass
-// along with the intent.
+
+        // intent is a property of the activity. intent.extras returns any data that was pass
+        // along with the intent.
         val bundle: Bundle? = intent.extras
         var position = -1
 
-        if (bundle != null) {
-// this is the image position in the items List
+        if (bundle!= null) {
+            // this is the image position in the items List
             position = bundle.getInt("position")
             if (position != -1) {
                 val imageView = findViewById<ImageView>(R.id.image)
@@ -35,5 +37,4 @@ class ShowImageActivity : AppCompatActivity() {
             }
         }
     }
-
 }
