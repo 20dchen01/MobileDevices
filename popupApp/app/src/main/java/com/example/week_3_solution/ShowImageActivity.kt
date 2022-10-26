@@ -18,13 +18,14 @@ class ShowImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_image)
-// intent is a property of the activity. intent.extras returns any data that was pass
-// along with the intent.
+
+        // intent is a property of the activity. intent.extras returns any data that was pass
+        // along with the intent.
         val bundle: Bundle? = intent.extras
         var position = -1
 
-        if (bundle != null) {
-// this is the image position in the items List
+        if (bundle!= null) {
+            // this is the image position in the items List
             position = bundle.getInt("position")
             if (position != -1) {
                 val imageView = findViewById<ImageView>(R.id.image)
@@ -35,5 +36,4 @@ class ShowImageActivity : AppCompatActivity() {
             }
         }
     }
-
 }

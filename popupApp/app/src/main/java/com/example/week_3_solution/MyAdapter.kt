@@ -11,19 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private lateinit var context: Context
-    //make private list of ImageElement called items
 
     companion object {
         lateinit var items: List<ImageElement>
     }
 
-
-    constructor(items: MutableList<ImageElement>) {
-        MyAdapter.items = items.toList()
+    constructor(items: List<ImageElement>) {
+        MyAdapter.items = items
     }
 
-    constructor(cont: Context, items: Array<ImageElement>) : super() {
-        MyAdapter.items = items.toList()
+    constructor(cont: Context, items: List<ImageElement>) : super() {
+        MyAdapter.items = items
         context = cont
     }
 
@@ -59,6 +57,8 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public class ViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         lateinit var image: Image
+        //        var title: TextView = itemView.findViewById<View>(R.id.title) as TextView
+//        var preview: TextView = itemView.findViewById<View>(R.id.preview) as TextView
         var imageView: ImageView = itemView.findViewById<View>(R.id.image_item) as ImageView
 
     }
