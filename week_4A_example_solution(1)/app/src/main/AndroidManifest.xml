@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.week_4A_solution">
 
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,10 +19,16 @@
         android:theme="@style/Theme.Week_4_solution"
         tools:targetApi="31">
         <activity
+            android:name=".CameraActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ShowImageActivity"
             android:exported="false"
-            android:label="@string/title_activity_show_image">
-        </activity>
+            android:label="@string/title_activity_show_image"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

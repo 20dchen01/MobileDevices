@@ -37,18 +37,19 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder> {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Use the provided View Holder on the onCreateViewHolder method to populate the
         // current row on the RecyclerView
-        if (items[position].image != -1) {
-//            holder.title.text = items[position].title
-//            holder.preview.text = items[position].preview
-            holder.imageView.setImageResource(items[position].image)
 
-            // onClick listener added to each item in the ViewHolder
-            holder.itemView.setOnClickListener(View.OnClickListener {
-                val intent = Intent(context, ShowImageActivity::class.java)
-                intent.putExtra("position", position)
-                context.startActivity(intent)
-            })
+        items[position].image?.let {
+            holder.imageView.setImageResource(it)
         }
+        items[position].file_uri?.let {
+            holder.imageView.setImageURI(it)
+        }
+        // onClick listener added to each item in the ViewHolder
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            val intent = Intent(context, ShowImageActivity::class.java)
+            intent.putExtra("position", position)
+            context.startActivity(intent)
+        })
     }
 
     override fun getItemCount(): Int {

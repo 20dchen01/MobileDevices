@@ -1,10 +1,14 @@
 package com.example.week_4A_solution
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,6 +19,23 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>
 //    private lateinit var mLayoutManager: RecyclerView.LayoutManager
     private val myDataset: MutableList<ImageElement> = ArrayList<ImageElement>()
+
+    val photoPicker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) {
+            val element = ImageElement(uri)
+            myDataset.add(element)
+            mRecyclerView.scrollToPosition(myDataset.size - 1)
+        }
+    }
+
+    var pickFromCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){uri->
+        val photo_uri = uri.data?.extras?.getString("uri")
+        if (photo_uri!=null){
+            val element = ImageElement(Uri.parse(photo_uri))
+            myDataset.add(element)
+            mRecyclerView.scrollToPosition(myDataset.size - 1)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +58,23 @@ class MainActivity : AppCompatActivity() {
         // specify an adapter (see also next example)
         mAdapter = MyAdapter(this, myDataset) as RecyclerView.Adapter<RecyclerView.ViewHolder>
         mRecyclerView.adapter = mAdapter
-        val fab: FloatingActionButton = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener(View.OnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+
+
+
+        val photoPickerFab: FloatingActionButton = findViewById<FloatingActionButton>(R.id.openGalleryFab)
+        photoPickerFab.setOnClickListener(View.OnClickListener { view ->
+            photoPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        })
+
+        val cameraPickerFab: FloatingActionButton = findViewById<FloatingActionButton>(R.id.openCamFab)
+        cameraPickerFab.setOnClickListener(View.OnClickListener { view ->
+            val intent = Intent(this, CameraActivity::class.java)
+            pickFromCamera.launch(intent)
         })
     }
 
     private fun initData() {
-        repeat(1000){
+        repeat(10){
             myDataset.add(ImageElement(R.drawable.joe1))
             myDataset.add(ImageElement(R.drawable.joe2))
             myDataset.add(ImageElement(R.drawable.joe3))

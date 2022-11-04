@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.week_4A_solution.MyAdapter.Companion.items
 import com.example.week_4A_solution.databinding.ActivityShowImageBinding
 
 class ShowImageActivity : AppCompatActivity() {
@@ -31,8 +32,12 @@ class ShowImageActivity : AppCompatActivity() {
             if (position != -1) {
                 val imageView = findViewById<ImageView>(R.id.image)
                 val element = MyAdapter.items[position]
-                if (element.image != -1) {
-                    imageView.setImageResource(element.image)
+
+                element.image?.let {
+                    imageView.setImageResource(it)
+                }
+                element.file_uri?.let {
+                    imageView.setImageURI(it)
                 }
             }
         }
