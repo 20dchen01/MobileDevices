@@ -1,4 +1,4 @@
-package com.example.week_5A_solution.data
+package com.example.week_5B_solution.data
 
 import android.content.Context
 import androidx.room.Database
@@ -23,7 +23,7 @@ abstract class AppDatabase: RoomDatabase() {
 
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-                // Wipes and rebuilds instead of migrating if no Migration object specified.
+                    // Wipes and rebuilds instead of migrating if no Migration object specified.
                 .fallbackToDestructiveMigration()
                 .build()
         }

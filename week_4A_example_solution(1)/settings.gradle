@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "week_5A_solution"
+rootProject.name = "week_5B_solution"
 include ':app'

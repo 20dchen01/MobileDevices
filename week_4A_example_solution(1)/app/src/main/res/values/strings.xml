@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Lab 5A example solution</string>
+    <string name="app_name">Mobile computing lab app</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_show_image">Image detail</string>
+    <string name="delete">Delete</string>
+    <string name="save">Update</string>
 </resources>
