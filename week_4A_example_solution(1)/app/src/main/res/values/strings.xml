@@ -4,4 +4,5 @@
     <string name="title_activity_show_image">Image detail</string>
     <string name="delete">Delete</string>
     <string name="save">Update</string>
+    <string name="default_image_title">Unspecified title</string>
 </resources>
